@@ -1,0 +1,25 @@
+A=imread('Image A.jpg');
+B=imread('Image B.jpg');
+
+
+%通过手动标点获取特征点矩阵
+inputpoint=[1309 1449;
+             2746 1758;
+             1973 977;
+             788 881;
+             1278 2438;
+             1183 1670;
+             2902 1113  ];
+ basepoint=[1078 1042;
+            2389 1711;
+            1841 756;
+            720 362;
+            794 1992;
+            901 1226;
+            2706 1126  ];
+        tform=fitgeotrans(inputpoint,basepoint,'affine');  %建立仿射矩阵%
+        A1=imwarp(A,tform);
+figure(1)
+imshow(A1)
+figure(2)
+imshow(B)
